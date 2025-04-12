@@ -25,4 +25,5 @@ public interface UserElasticRepository extends ElasticsearchRepository<User, Int
           }
           """)
     Iterable<User> getUserStartsWithKeyword(String keyword);
+
 }
