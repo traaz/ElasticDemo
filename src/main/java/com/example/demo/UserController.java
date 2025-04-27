@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,15 +29,18 @@ public class UserController {
     @GetMapping
     public Iterable<User> getAll(){
 
-        return userElasticRepository.findAll();
+        Iterable<User> users = userElasticRepository.findAll();
+        List<User> userList = new ArrayList<>();
+        users.forEach(userList::add); //  //sadece content içeriğini alıyoz
+        return userList;
 
     }
     @GetMapping("/{name}")
-    public Iterable<User> getUserFromName(@PathVariable String name){
+    public List<User> getUserFromName(@PathVariable String name){
         return userElasticRepository.getUserFromName(name);
     }
     @GetMapping("startwith/{keyword}")
-    public Iterable<User> getUserStartWithKeyword(@PathVariable String keyword){
+    public List<User> getUserStartWithKeyword(@PathVariable String keyword){
         return userElasticRepository.getUserStartsWithKeyword(keyword);
     }
     @GetMapping("/search")

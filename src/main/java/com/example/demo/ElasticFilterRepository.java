@@ -31,7 +31,7 @@ public class ElasticFilterRepository {
                 b.must(m -> m.matchPhrasePrefix(mp -> mp.field("userSurname").query(surname)));
             }
             if (age != null) {
-                b.must(m -> m.term(t -> t.field("age").value(age)));
+                b.must(m -> m.term(t -> t.field("userAge").value(age)));
             }
             return b; // BoolQueryBuilder'ı döndür
         }));

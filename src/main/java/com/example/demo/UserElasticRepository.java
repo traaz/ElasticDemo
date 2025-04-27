@@ -15,7 +15,7 @@ public interface UserElasticRepository extends ElasticsearchRepository<User, Int
       }
     }
 """)
-    Iterable<User> getUserFromName(String name);
+    List<User> getUserFromName(String name);
 
     @Query("""
           {
@@ -24,6 +24,6 @@ public interface UserElasticRepository extends ElasticsearchRepository<User, Int
             }
           }
           """)
-    Iterable<User> getUserStartsWithKeyword(String keyword);
+    List<User> getUserStartsWithKeyword(String keyword);
 
 }

@@ -24,6 +24,20 @@ services:
     depends_on:
       - elasticsearch
 
+  logstash:
+    image: 'docker.elastic.co/logstash/logstash:8.12.0'
+    container_name: 'logstash'
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf  #Logstash yapılandırma dosyanızı konteyner içine kopyalıyorsunuz
+      - ./postgresql-42.7.5.jar:/usr/share/logstash/postgresql-42.7.5.jar  #logstash icine postgre atıyoz #sol taraf benim sağ taraf containe ici
+
+
+
+
 
 
 
