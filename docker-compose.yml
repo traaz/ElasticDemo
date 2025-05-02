@@ -34,16 +34,11 @@ services:
     volumes:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf  #Logstash yapılandırma dosyanızı konteyner içine kopyalıyorsunuz
       - ./postgresql-42.7.5.jar:/usr/share/logstash/postgresql-42.7.5.jar  #logstash icine postgre atıyoz #sol taraf benim sağ taraf containe ici
-
-
-
-
-
-
+      - ./logstash-metadata:/usr/share/logstash/last_run_metadata
 
 volumes:
   elasticsearch-data:
-
+  logstash-metadata:
 
 
 
